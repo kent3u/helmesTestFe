@@ -2,7 +2,7 @@
 
 Please use provided account to log in: username - foo; password - password
 
-Node and npm versions used respectevly: v16.15.1 & 8.11.0
+Node and npm versions used respectively: v16.15.1 & 8.11.0
 
 Back-end is found here https://github.com/kent3u/helmesTestBe
 
