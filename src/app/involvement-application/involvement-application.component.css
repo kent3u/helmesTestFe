@@ -1,0 +1,16 @@
+mat-card {
+  max-width: 800px;
+  margin: 2em auto;
+}
+
+mat-form-field, mat-checkbox {
+  display: block;
+}
+
+mat-card-actions {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}

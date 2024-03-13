@@ -1,0 +1,43 @@
+<ng-container *ngIf="involvementApplication$ | async as involvementApplication">
+  <form #applicationForm="ngForm"
+        (ngSubmit)="submitInvolvementApplication(involvementApplication)">
+    <mat-card>
+
+      <mat-card-header>
+        <mat-card-title>
+          Please enter your name and pick the Sectors you are currently involved in.
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content class="mt-4">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput [ngModel]="involvementApplication.clientFullName" name="clientFullName" disabled>
+        </mat-form-field>
+        <ng-container *ngIf="sectors$ | async as sectors">
+          <hierarchy-tree [sectors]="sectors"
+                          [(selectedSectorIds)]="involvementApplication.selectedSectorIds">
+          </hierarchy-tree>
+        </ng-container>
+        <mat-checkbox [(ngModel)]="involvementApplication.termsAgree"
+                      color="accent"
+                      name="termsAgree"
+                      class="mt-4"
+                      required
+        >
+          Agree to terms
+        </mat-checkbox>
+        <mat-error *ngIf="(applicationForm.controls['termsAgree']?.dirty || applicationForm.controls['termsAgree']?.touched) && !applicationForm.controls['termsAgree'].valid">
+          You must agree with the terms
+        </mat-error>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">
+          {{ getInvolvementApplicationButtonSubmitButtonText(involvementApplication.id) }}
+        </button>
+      </mat-card-actions>
+
+    </mat-card>
+  </form>
+</ng-container>
